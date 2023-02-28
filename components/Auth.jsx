@@ -1,5 +1,6 @@
 import { supabase } from "../utils/supabaseClient";
 import { useEffect, useState } from "react";
+import Image from "next/image"
 
 const Auth = () => {
   const [login, setLogin] = useState(false);
@@ -19,7 +20,7 @@ const Auth = () => {
     <div>
       {login ? (
         <div>
-          <h1>Logged in <img src={user.user_metadata.picture} height="48" width="48" class="rounded-full inline-block" /> {user.user_metadata.name}</h1>
+          <h1>Logged in <Image alt="Twitch profile picture" src={user.user_metadata.picture} height="48" width="48" class="rounded-full inline-block" /> {user.user_metadata.name}</h1>
         </div>
       ) : (
         <button
