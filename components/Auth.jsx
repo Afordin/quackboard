@@ -19,7 +19,7 @@ const Auth = () => {
     <div>
       {login ? (
         <div>
-          <h1>Logged in</h1>
+          <h1>Logged in <img src={user.user_metadata.picture} height="48" width="48" class="rounded-full inline-block" /> {user.user_metadata.name}</h1>
         </div>
       ) : (
         <button
