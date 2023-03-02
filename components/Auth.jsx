@@ -19,16 +19,17 @@ const Auth = () => {
   return (
     <div>
       {login ? (
-        <div>
-          <h1>Logged in <Image alt="Twitch profile picture" src={user.user_metadata.picture} height="48" width="48" class="rounded-full inline-block" /> {user.user_metadata.name}</h1>
-        </div>
+        <button class="bg-[#772ce8] text-white button" aria-label="Cerrar sesión" onClick={() => {
+          supabase.auth.signOut()
+        }}><Image alt="Twitch profile picture" src={user.user_metadata.picture} height="32" width="32" class="rounded-full inline-block" /> {user.user_metadata.name} x</button>
+
       ) : (
-        <button
+        <button class="bg-[#772ce8] text-white button"
           onClick={() => {
             supabase.auth.signInWithOAuth({ provider: "twitch" });
           }}
         >
-          Log in with twitch
+          Iniciar sesión con Twitch
         </button>
       )}
     </div>

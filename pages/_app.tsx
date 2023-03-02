@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import "../styles/globals.css";
 import Head from "next/head";
-import Link from "next/link";
+import Header from "../components/Header";
 
 export const siteTitle = "Cuack";
 const inter = Inter({ subsets: ['latin'] })
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
-      <div className="p-4">
+      <div className="p-4 container max-w-6xl mx-auto">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta name="description" content="Cuack cuack cuack" />
@@ -28,12 +28,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className="border-b py-3 mb-6 font-bold">
-          <Link href="/about">About Us</Link>
-        </header>
-        <main><Component {...pageProps} /></main>
-        <footer className="border-t py-3 mt-6 font-bold">
-          (c) 2023 Cuack cuack
+        <Header />
+        <main className="my-12"><Component {...pageProps} /></main>
+        <footer className="border-t pt-4 mt-12 text-sm font-medium justify-between flex">
+          <div>(c) 2023 Cuack cuack</div>
+          <div>#Hackafor2023</div>
         </footer>
       </div>
     </>

@@ -93,7 +93,7 @@ export default class Quackboard extends React.Component {
     };
     render() {
         return (<>
-                        <PianoRecording
+            <PianoRecording
                 recording={this.state.recording}
                 setRecording={this.setRecording}
                 noteRange={noteRange}
@@ -104,7 +104,7 @@ export default class Quackboard extends React.Component {
                     const audio = new Audio(`/sounds/${midiNumber - 60}.mp3`);
                     audio.play();
                 }}
-                stopNote={() => {}}
+                stopNote={() => { }}
                 keyboardShortcuts={keyboardShortcuts}
             />
             <div className="mt-5 flex gap-3">
@@ -116,7 +116,7 @@ export default class Quackboard extends React.Component {
                 <strong>Recorded notes</strong>
                 <div>{JSON.stringify(this.state.recording.events)}</div>
             </div>
-            </>
+        </>
         );
     }
 }
