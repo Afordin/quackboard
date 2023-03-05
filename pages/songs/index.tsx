@@ -1,6 +1,34 @@
+import Image from "next/image.js";
+import { useState, useEffect } from "react";
 import Quackboard from "../../components/Quackboard.jsx";
+import { supabase } from "../../utils/supabaseClient";
+
+
+
 
 export default function List() {
+    const [songs, setSongs] = useState([]);
+
+    const getSongsFromSupabase = async () => {
+        const { data, error } = await supabase
+            .from('canciones')
+            .select('*')
+        if (error) {
+            console.log(error)
+        } else {
+            setSongs(data)
+        }
+    }
+
+    useEffect(() => {
+        getSongsFromSupabase()
+    }, [])
+    
+
+
+
+
+
     return (
         <section>
             <div className="max-w-2xl">
@@ -13,8 +41,22 @@ export default function List() {
                 <li>
                     <article>
                         <header>
-                            <h2>Himno de la Alegría</h2>
-                            <span>owlnai · 25/03/2023</span>
+                            {songs?.map((song) => {
+                                const date = new Date(song.created_at)
+                                const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+
+                                return (
+                                    <div className="flex justify-start items-center gap-8" key={song.id}>
+                                        <Image src={song.profilePicture} alt='profileImg' width={40} height={40} className="rounded-full"/>
+                                        <div >
+                                            <h3>{song.title}</h3>
+                                            <span>{song.username}</span>
+                                            <p>{formattedDate}</p>
+                                        </div>
+                                    </div>
+                                  
+                                )
+                            })}
                         </header>
                     </article>
                 </li>    
