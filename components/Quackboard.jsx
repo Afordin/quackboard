@@ -23,7 +23,7 @@ export default class Quackboard extends React.Component {
   state = {
     recording: {
       mode: "RECORDING",
-      events: [],
+      events: this.props.song ? JSON.parse(this.props.song) : [],
       currentTime: 0,
       currentEvents: [],
     },
@@ -83,7 +83,14 @@ export default class Quackboard extends React.Component {
     });
   };
 
+  setEvents = (value) => {
+    this.setState({
+      events: Object.assign({}, this.state.recording.currentEvents, value),
+    });
+  };
+
   onClickPlay = () => {
+    console.log(this.state.recording.events);
     this.setRecording({
       mode: "PLAYING",
     });
@@ -96,7 +103,37 @@ export default class Quackboard extends React.Component {
     startAndEndTimes.forEach((time) => {
       this.scheduledEvents.push(
         setTimeout(() => {
-          const currentEvents = this.state.recording.events.filter((event) => {
+          const currentEvents = this.state.recording.events?.filter((event) => {
+            return event.time <= time && event.time + event.duration > time;
+          });
+          this.setRecording({
+            currentEvents,
+          });
+        }, time * 1000)
+      );
+    });
+    // Stop at the end
+    setTimeout(() => {
+      this.onClickStop();
+    }, this.getRecordingEndTime() * 1000);
+  };
+
+  //play props song
+  onClickPlayProps = (events) => {
+    this.setRecording({
+      mode: "PLAYING",
+      events: events,
+    });
+    const startAndEndTimes = _.uniq(
+      _.flatMap(this.state.recording.events, (event) => [
+        event.time,
+        event.time + event.duration,
+      ])
+    );
+    startAndEndTimes.forEach((time) => {
+      this.scheduledEvents.push(
+        setTimeout(() => {
+          const currentEvents = this.state.recording.events?.filter((event) => {
             return event.time <= time && event.time + event.duration > time;
           });
           this.setRecording({
@@ -130,6 +167,13 @@ export default class Quackboard extends React.Component {
       currentTime: 0,
     });
   };
+
+  componentDidMount() {
+    if (this.props.song) {
+      this.onClickPlayProps(JSON.parse(this.props.song));
+    }
+  }
+
   render() {
     return (
       <>
@@ -139,7 +183,6 @@ export default class Quackboard extends React.Component {
           noteRange={noteRange}
           width={1120}
           playNote={(midiNumber) => {
-            console.log(midiNumber);
             // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
             const audio = new Audio(`/sounds/${midiNumber - 60}.mp3`);
             audio.play();
@@ -152,26 +195,33 @@ export default class Quackboard extends React.Component {
           <div className="flex gap-3">
             <button onClick={this.onClickPlay}>Play</button>
             <button onClick={this.onClickStop}>Stop</button>
-            <button onClick={this.onClickClear}>Clear</button>
+            {this.props.song ? null : (
+              <button onClick={this.onClickClear}>Clear</button>
+            )}
           </div>
-          <div className="flex justify-center items-center gap-5">
-            <input
-              type="text"
-              placeholder="Titulo de la cancion"
-              className="
+
+          {this.props.song ? null : (
+            <div className="flex justify-center items-center gap-5">
+              <input
+                type="text"
+                placeholder="Titulo de la cancion"
+                className="
             rounded-md bg-gray-100 w-60 h-10 pl-5 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100"
-              onFocus={() => this.setState({ disabled: true })}
-              onBlur={() => this.setState({ disabled: false })}
-              onChange={(e) => this.setState({ title: e.target.value })}
-            />
-            <button
-              className="rounded-md bg-pink-600 w-40 h-10 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
-              onClick={() => this.uploadToSupabase(this.state.recording.events)}
-              disabled={this.state.loading}
-            >
-              {this.state.loading ? <Loader /> : "Compartir Cancion"}
-            </button>
-          </div>
+                onFocus={() => this.setState({ disabled: true })}
+                onBlur={() => this.setState({ disabled: false })}
+                onChange={(e) => this.setState({ title: e.target.value })}
+              />
+              <button
+                className="rounded-md bg-pink-600 w-40 h-10 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                onClick={() =>
+                  this.uploadToSupabase(this.state.recording.events)
+                }
+                disabled={this.state.loading}
+              >
+                {this.state.loading ? <Loader /> : "Compartir Cancion"}
+              </button>
+            </div>
+          )}
         </div>
         <div className="mt-5">
           {/* <strong>Recorded notes</strong>
