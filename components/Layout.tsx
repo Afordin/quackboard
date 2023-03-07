@@ -29,7 +29,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
-            <div className="p-4 container max-w-6xl mx-auto">
+            <div className="py-4 px-8 container max-w-6xl mx-auto">
                 <Head>
                     <title>{meta.title}</title>
                     <meta name="robots" content="follow, index" />

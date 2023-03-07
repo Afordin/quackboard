@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <section className="flex flex-col sm:flex-row justify-between">
+    <section className="flex gap-6 flex-col xl:flex-row justify-between">
       <div className="">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           El mejor piano
