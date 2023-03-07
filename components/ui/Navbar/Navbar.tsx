@@ -5,7 +5,7 @@ export default function Header() {
   return (
         <header className="border-b pb-3 mb-6 font-medium flex justify-between items-center gap-4 sm:gap-0 flex-col sm:flex-row">
             <div className="font-semibold">
-                <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true">🦆</span>Cuack 0.1.0-alpha</Link>
+                <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true" class="mr-1">🦆</span>Quackboard</Link>
             </div>
             <nav>
                 <ul className="flex gap-8">

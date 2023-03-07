@@ -50,7 +50,7 @@ export default class Quackboard extends React.Component {
     const { nickname, picture } = userData.user_metadata
     const { error } = await supabase.from('canciones').insert({
       author: user,
-      message: JSON.stringify(events),
+      message: events,
       username: nickname,
       profilePicture: picture,
       title: this.state.title,
@@ -144,7 +144,7 @@ export default class Quackboard extends React.Component {
           recording={this.state.recording}
           setRecording={this.setRecording}
           noteRange={noteRange}
-          width={1120}
+          width={this.props.width || 1120}
           playNote={(midiNumber) => {
             // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
             const audio = new Audio(`/sounds/${midiNumber - 60}.mp3`)

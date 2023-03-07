@@ -20,23 +20,19 @@ export default function List() {
 
   return (
     <section>
-      <div className="max-w-2xl">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Lista de canciones
-        </h2>
-      </div>
-      <ul role="list">
-        <li>
-          <article>
-            <header>
-              {songs?.map((song) => {
-                return (
-                  <SongRow song={song} key={song.id.toString()} />
-                )
-              })}
-            </header>
-          </article>
-        </li>
+      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Lista de canciones
+      </h2>
+      <ul role="list" className="grid grid-cols-2 gap-4">
+        {songs?.map((song) => {
+          return (
+            <li key={song.id.toString()}>
+              <article>
+                <SongRow song={song} />
+              </article>
+            </li>
+          )
+        })}
       </ul>
     </section>
   )
