@@ -1,14 +1,14 @@
-import Auth from "./Auth";
-import Link from "next/link";
+import Link from 'next/link'
+import Auth from '@/components/Auth'
 
 export default function Header() {
-    return (
+  return (
         <header className="border-b pb-3 mb-6 font-medium flex justify-between items-center gap-4 sm:gap-0 flex-col sm:flex-row">
-            <div class="font-semibold">
-                <Link href="/">🦆 Cuack 0.1.0-alpha</Link>
+            <div className="font-semibold">
+                <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true">🦆</span>Cuack 0.1.0-alpha</Link>
             </div>
             <nav>
-                <ul class="flex gap-8">
+                <ul className="flex gap-8">
                     <li>
                         <Link href="/">Inicio</Link>
                     </li>
@@ -20,10 +20,10 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-            <div class="flex gap-4">
-                <Link class="bg-gradient-to-r items-center flex from-pink-500 to-pink-800 text-white button" href="/songs/new">+ Crear canción</Link>
+            <div className="flex gap-4">
+                <Link className="bg-gradient-to-r items-center flex from-pink-500 to-pink-800 text-white button" href="/songs/new">+ Crear canción</Link>
                 <Auth />
             </div>
         </header>
-    )
+  )
 }

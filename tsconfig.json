@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/layout.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/layout.jsx", "components/Auth.tsx", "components/PianoRecording.jsx", "components/PianoRecording.jsx"],
   "exclude": ["node_modules"]
 }

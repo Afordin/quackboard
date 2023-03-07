@@ -1,13 +1,18 @@
-import Image from "next/image";
-import { useState } from "react";
-import Quackboard from "./Quackboard";
+import Image from 'next/image'
+import { useState } from 'react'
+import Quackboard from './Quackboard'
 
-const SongRow = ({ song }) => {
-  const [playing, setPlaying] = useState(false);
-  const date = new Date(song.created_at);
+import type { Song } from '@/types'
+interface SongRowProps {
+  song: Song
+}
+
+const SongRow = ({ song }: SongRowProps) => {
+  const [playing, setPlaying] = useState(false)
+  const date = new Date(song.created_at)
   const formattedDate = `${date.getDate()}/${
     date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  }/${date.getFullYear()}`
   return (
     <div className="flex-col ">
       <div
@@ -37,7 +42,7 @@ const SongRow = ({ song }) => {
       </div>
       {playing && <Quackboard song={song.message} />}
     </div>
-  );
-};
+  )
+}
 
-export default SongRow;
+export default SongRow

@@ -1,4 +1,4 @@
-const Loader = () => {
+export default function Loader() {
   return (
     <svg
       width="13"
@@ -12,7 +12,5 @@ const Loader = () => {
         stroke="white"
       />
     </svg>
-  );
-};
-
-export default Loader;
+  )
+}

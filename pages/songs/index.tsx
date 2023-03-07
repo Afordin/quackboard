@@ -1,26 +1,22 @@
-import Image from "next/image.js";
-import { useState, useEffect } from "react";
-import Quackboard from "../../components/Quackboard.jsx";
-import { supabase } from "../../utils/supabaseClient";
-import SongRow from "../../components/SongRow.jsx";
-import { randomUUID } from "crypto";
+import { useEffect, useState } from 'react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import SongRow from '@/components/SongRow'
+import type { Song } from '@/types'
 
 export default function List() {
-  const [songs, setSongs] = useState([]);
-  //const [playing, setPlaying] = useState(false);
-
+  const supabase = useSupabaseClient()
+  // const [playing, setPlaying] = useState(false);
+  const [songs, setSongs] = useState<Song[] | null>(null)
   const getSongsFromSupabase = async () => {
-    const { data, error } = await supabase.from("canciones").select("*");
-    if (error) {
-      console.log(error);
-    } else {
-      setSongs(data);
-    }
-  };
+    const { data, error } = await supabase.from('canciones').select('*')
+    error
+      ? console.log(error)
+      : setSongs(data as Song[])
+  }
 
   useEffect(() => {
-    getSongsFromSupabase();
-  }, []);
+    getSongsFromSupabase()
+  }, [])
 
   return (
     <section>
@@ -35,15 +31,13 @@ export default function List() {
             <header>
               {songs?.map((song) => {
                 return (
-                  <>
-                    <SongRow song={song} />
-                  </>
-                );
+                  <SongRow song={song} key={song.id.toString()} />
+                )
               })}
             </header>
           </article>
         </li>
       </ul>
     </section>
-  );
+  )
 }

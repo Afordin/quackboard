@@ -1,64 +1,63 @@
-import React from "react";
-import { Piano } from "react-piano";
-import "react-piano/dist/styles.css";
+import React from 'react'
+import { Piano } from 'react-piano'
+import 'react-piano/dist/styles.css'
 
-import ModalComponent from "./ModalComponent";
-
-const DURATION_UNIT = 0.2;
-const DEFAULT_NOTE_DURATION = DURATION_UNIT;
+const DURATION_UNIT = 0.2
+const DEFAULT_NOTE_DURATION = DURATION_UNIT
 
 class PianoRecording extends React.Component {
   static defaultProps = {
     notesRecorded: false,
-  };
+  }
 
   state = {
     keysDown: {},
     noteDuration: DEFAULT_NOTE_DURATION,
-  };
+  }
 
-  onPlayNoteInput = (midiNumber) => {
+  onPlayNoteInput = (_midiNumber) => {
     this.setState({
       notesRecorded: false,
-    });
-  };
+    })
+  }
 
   onStopNoteInput = (midiNumber, { prevActiveNotes }) => {
     if (this.state.notesRecorded === false) {
-      this.recordNotes(prevActiveNotes, this.state.noteDuration);
+      this.recordNotes(prevActiveNotes, this.state.noteDuration)
       this.setState({
         notesRecorded: true,
         noteDuration: DEFAULT_NOTE_DURATION,
-      });
+      })
     }
-  };
+  }
 
   recordNotes = (midiNumbers, duration) => {
-    if (this.props.recording.mode !== "RECORDING") {
-      return;
-    }
+    if (this.props.recording.mode !== 'RECORDING')
+      return
+
     const newEvents = midiNumbers.map((midiNumber) => {
       return {
         midiNumber,
         time: this.props.recording.currentTime,
-        duration: duration,
-      };
-    });
+        duration,
+      }
+    })
+
     this.props.setRecording({
       events: this.props.recording.events.concat(newEvents),
       currentTime: this.props.recording.currentTime + duration,
-    });
-  };
+    })
+  }
 
   render() {
-    const { playNote, stopNote, recording, setRecording, ...pianoProps } =
-      this.props;
+    const { playNote, stopNote, recording, setRecording, ...pianoProps }
+      = this.props
 
-    const { mode, currentEvents } = this.props.recording;
-    const activeNotes =
-      mode === "PLAYING"
-        ? currentEvents.map((event) => event.midiNumber)
-        : null;
+    const { mode, currentEvents } = this.props.recording
+    const activeNotes
+      = mode === 'PLAYING'
+        ? currentEvents.map(event => event.midiNumber)
+        : null
     return (
       <div className="">
         <Piano
@@ -70,8 +69,8 @@ class PianoRecording extends React.Component {
           {...pianoProps}
         />
       </div>
-    );
+    )
   }
 }
 
-export default PianoRecording;
+export default PianoRecording
