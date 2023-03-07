@@ -19,9 +19,9 @@ export default function Home() {
           >
             Tocar una canción
           </Link>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link href="/songs" className="text-sm font-semibold leading-6 text-gray-900">
             Ver canciones creadas <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="rounded-2xl overflow-hidden h-56 aspect-video">
