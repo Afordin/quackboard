@@ -5,20 +5,20 @@ import type { Song } from '@/types'
 
 export default function List() {
   const supabase = useSupabaseClient()
-  // const [playing, setPlaying] = useState(false);
   const [songs, setSongs] = useState<Song[] | null>(null)
-  const getSongsFromSupabase = async () => {
-    const { data, error } = await supabase.from('canciones').select('*')
-    error ? console.log(error) : setSongs(data as Song[])
-  }
 
   useEffect(() => {
+    const getSongsFromSupabase = async () => {
+      const { data, error } = await supabase.from('canciones').select('*')
+      if (!error)
+        setSongs(data as Song[])
+    }
     getSongsFromSupabase()
-  }, [])
+  }, [supabase])
 
   return (
     <section>
-      <h1 className="text-xl font-bold comic-title text-green-400 sm:text-5xl">Lista de canciones</h1>
+      <h1 className="text-xl font-bold supershadow-title text-green-400 sm:text-5xl">Lista de canciones</h1>
       <ul role="list" className="grid grid-cols-2 gap-4 mt-6">
         {songs?.map((song) => {
           return (

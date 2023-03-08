@@ -157,7 +157,7 @@ export default class Quackboard extends React.Component {
         <div className=" flex mt-6 justify-between align-middle">
           <div className="flex gap-3">
             <button className="!bg-green-400 button" onClick={this.onClickPlay}>Escuchar de nuevo</button>
-            <button className="!bg-red-400 button"  onClick={this.onClickStop}>Parar</button>
+            <button className="!bg-red-400 button" onClick={this.onClickStop}>Parar</button>
             {this.props.song
               ? null
               : (
