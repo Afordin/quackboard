@@ -1,23 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 const people = [
-    {
-        name: 'owlnai',
-        role: 'Diseño y código',
-        imageUrl:
+  {
+    name: 'owlnai',
+    role: 'Diseño y código',
+    imageUrl:
             'https://avatars.githubusercontent.com/u/20427094?s=64&v=4',
-    },
-    {
-        name: 'adriDiazz',
-        role: 'Diseño y código',
-        imageUrl:
+  },
+  {
+    name: 'adriDiazz',
+    role: 'Diseño y código',
+    imageUrl:
             'https://avatars.githubusercontent.com/u/90914879?s=64&v=4',
-    },
-    // More people...
+  },
+  // More people...
 ]
 
 export default function Home() {
-    return (
+  return (
         <section>
             <div className="max-w-2xl">
                 <h1 className="text-xl font-bold comic-title text-green-400 sm:text-5xl">Acerca de</h1>
@@ -41,5 +41,5 @@ export default function Home() {
 
             </ul>
         </section>
-    )
+  )
 }

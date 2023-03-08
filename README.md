@@ -1,3 +1,4 @@
+# 🦆 Quackboard
 This is a project for the Hackafor 2023, a Spanish hackathon. It's basically a piano that plays back duck sounds and you can share your creations with your friends.
 
 ## Tech stack
