@@ -175,7 +175,7 @@ export default class Quackboard extends React.Component {
             <div className="flex justify-center items-center gap-5">
               <input
                 type="text"
-                placeholder="Titulo de la cancion"
+                placeholder="Título de la canción"
                 className="
             rounded-md bg-white border-2 border-black w-60 h-10 pl-5 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100"
                 onFocus={() => this.setState({ disabled: true })}
