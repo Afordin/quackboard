@@ -13,7 +13,6 @@ const people = [
     imageUrl:
             'https://avatars.githubusercontent.com/u/90914879?s=64&v=4',
   },
-  // More people...
 ]
 
 export default function Home() {

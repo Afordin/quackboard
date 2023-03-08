@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .button {
-    @apply py-1 px-4 rounded-full font-bold uppercase text-sm border-2 border-black bg-white text-black hover: scale-[.98];
+    @apply py-1 px-4 rounded-full font-bold uppercase text-sm border-2 border-black bg-white text-black hover:scale-[.98];
     text-shadow: 0 0;
 }
 
