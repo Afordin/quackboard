@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react'
-import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import SongRow from '@/components/SongRow'
 import type { Song } from '@/types'
 
-export default function List() {
-  const supabase = useSupabaseClient()
-  const [songs, setSongs] = useState<Song[] | null>(null)
-
-  useEffect(() => {
-    const getSongsFromSupabase = async () => {
-      const { data, error } = await supabase.from('canciones').select('*')
-      if (!error)
-        setSongs(data as Song[])
-    }
-    getSongsFromSupabase()
-  }, [supabase])
-
+export default function List({ songs }: { songs: Song[] }) {
   return (
     <section>
-      <h1 className="text-xl font-bold supershadow-title text-green-400 sm:text-5xl">Lista de canciones</h1>
+      <h1 className="text-xl font-bold comic-title text-green-400 sm:text-5xl">Lista de canciones</h1>
       <ul role="list" className="grid grid-cols-2 gap-4 mt-6">
         {songs?.map((song) => {
           return (
@@ -32,4 +19,13 @@ export default function List() {
       </ul>
     </section>
   )
+}
+export const getServerSideProps = async (ctx: any) => {
+  const supabase = createServerSupabaseClient(ctx)
+  const { data, error } = await supabase.from('canciones').select('*')
+
+  if (error)
+    return { props: { songs: null } }
+
+  return { props: { songs: data as Song[] } }
 }

@@ -21,7 +21,7 @@ class PianoRecording extends React.Component {
     })
   }
 
-  onStopNoteInput = (midiNumber, { prevActiveNotes }) => {
+  onStopNoteInput = (_midiNumber, { prevActiveNotes }) => {
     if (this.state.notesRecorded === false) {
       this.recordNotes(prevActiveNotes, this.state.noteDuration)
       this.setState({
@@ -50,7 +50,7 @@ class PianoRecording extends React.Component {
   }
 
   render() {
-    const { playNote, stopNote, recording, setRecording, ...pianoProps }
+    const { _playNote, _stopNote, _recording, _setRecording, ...pianoProps }
       = this.props
 
     const { mode, currentEvents } = this.props.recording
