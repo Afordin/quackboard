@@ -3,11 +3,11 @@ import Auth from '@/components/Auth'
 
 export default function Header() {
   return (
-        <header className="border-b pb-3 mb-6 font-medium flex justify-between items-center gap-4 sm:gap-0 flex-col sm:flex-row">
-            <div className="font-semibold">
-                <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true" className="mr-1">🦆</span>Quackboard</Link>
+        <header className="flex flex-col items-center justify-between gap-4 px-5 py-2 mb-4 font-medium bg-white border-2 border-black rounded-full sm:gap-0 sm:flex-row">
+            <div className="font-semibold supershadow-text">
+                <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true" className="mr-1 [text-shadow:0_0]">🦆</span>Quackboard</Link>
             </div>
-            <nav>
+            <nav className="supershadow-text">
                 <ul className="flex gap-8">
                     <li>
                         <Link href="/">Inicio</Link>
@@ -21,7 +21,7 @@ export default function Header() {
                 </ul>
             </nav>
             <div className="flex gap-4">
-                <Link className="bg-gradient-to-r items-center flex from-pink-500 to-pink-800 text-white button" href="/songs/new">+ Crear canción</Link>
+                <Link className="flex items-center text-white !bg-amber-400 button" href="/songs/new">+ Crear canción</Link>
                 <Auth />
             </div>
         </header>

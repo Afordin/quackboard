@@ -154,14 +154,14 @@ export default class Quackboard extends React.Component {
           keyboardShortcuts={keyboardShortcuts}
           disabled={this.state.disabled}
         />
-        <div className=" flex mt-12 justify-between align-middle">
+        <div className=" flex mt-6 justify-between align-middle">
           <div className="flex gap-3">
-            <button onClick={this.onClickPlay}>Play</button>
-            <button onClick={this.onClickStop}>Stop</button>
+            <button className="!bg-green-400 button" onClick={this.onClickPlay}>Escuchar de nuevo</button>
+            <button className="!bg-red-400 button"  onClick={this.onClickStop}>Parar</button>
             {this.props.song
               ? null
               : (
-              <button onClick={this.onClickClear}>Clear</button>
+                <button className="button" onClick={this.onClickClear}>Limpiar</button>
                 )}
           </div>
 
@@ -173,13 +173,13 @@ export default class Quackboard extends React.Component {
                 type="text"
                 placeholder="Titulo de la cancion"
                 className="
-            rounded-md bg-gray-100 w-60 h-10 pl-5 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100"
+            rounded-md bg-white border-2 border-black w-60 h-10 pl-5 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100"
                 onFocus={() => this.setState({ disabled: true })}
                 onBlur={() => this.setState({ disabled: false })}
                 onChange={e => this.setState({ title: e.target.value })}
               />
               <button
-                className="rounded-md bg-pink-600 w-40 h-10 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+                className="button !bg-amber-400"
                 onClick={() =>
                   this.uploadToSupabase(this.state.recording.events)
                 }

@@ -11,7 +11,7 @@ export default function Auth() {
       {user
         ? (
         <button
-          className="bg-[#772ce8] text-white button"
+            className=" button !bg-[#772ce8] !text-white group"
           aria-label="Cerrar sesión"
           onClick={() => {
             supabase.auth.signOut()
@@ -20,11 +20,12 @@ export default function Auth() {
           <Image
             alt="Twitch profile picture"
             src={user.user_metadata.picture}
-            height="32"
-            width="32"
+            height="18"
+            width="18"
             className="rounded-full inline-block"
           />{' '}
-          {user.user_metadata.name} x
+            {user.user_metadata.name}
+            <span className="opacity-0 group-hover:opacity-100 pl-1">x</span>
         </button>
           )
         : (

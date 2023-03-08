@@ -2,12 +2,12 @@ import type { PropsWithChildren } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import type { PageMeta } from '../types'
 import Navbar from '@/components/ui/Navbar/Navbar'
 import Footer from '@/components/ui/Footer/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const bangers = Nunito({ weight: ['400', '500', '700', '900'], subsets: ['latin'] })
 
 interface Props extends PropsWithChildren {
   meta?: PageMeta
@@ -23,10 +23,10 @@ export default function Layout({ children, meta: pageMeta }: Props) {
   }
 
   return (
-        <>
+    <div className="bg-duck min-h-screen text-white supershadow-tools">
             <style jsx global>{`
         html {
-          font-family: ${inter.style.fontFamily};
+          font-family: ${bangers.style.fontFamily};
         }
       `}</style>
             <div className="py-4 px-8 container max-w-6xl mx-auto">
@@ -37,7 +37,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
                     <meta content={meta.description} name="description" />
                     <meta
                         property="og:url"
-                        content={`https://subscription-starter.vercel.app${router.asPath}`}
+                        content={`https://quackboard.vercel.app${router.asPath}`}
                     />
                     <meta property="og:type" content="website" />
                     <meta property="og:site_name" content={meta.title} />
@@ -45,7 +45,6 @@ export default function Layout({ children, meta: pageMeta }: Props) {
                     <meta property="og:title" content={meta.title} />
                     <meta property="og:image" content={meta.cardImage} />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:site" content="@vercel" />
                     <meta name="twitter:title" content={meta.title} />
                     <meta name="twitter:description" content={meta.description} />
                     <meta name="twitter:image" content={meta.cardImage} />
@@ -54,6 +53,6 @@ export default function Layout({ children, meta: pageMeta }: Props) {
                 <main id="skip" className="my-12">{children}</main>
                 <Footer />
           </div>
-      </>
+      </div>
   )
 }
