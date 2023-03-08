@@ -147,7 +147,6 @@ export default class Quackboard extends React.Component {
           width={this.props.width || 1120}
           playNote={(midiNumber) => {
             // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
-            console.log(midiNumber, midiNumber - 65)
             const audio = new Audio(`/sounds/${midiNumber - 65}.mp3`)
             audio.play()
           }}
