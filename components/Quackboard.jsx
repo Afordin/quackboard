@@ -8,7 +8,7 @@ import Loader from './Loader'
 
 const noteRange = {
   first: MidiNumbers.fromNote('c4'),
-  last: MidiNumbers.fromNote('b4'),
+  last: MidiNumbers.fromNote('c5'),
 }
 const keyboardShortcuts = KeyboardShortcuts.create({
   firstNote: noteRange.first,
@@ -147,7 +147,8 @@ export default class Quackboard extends React.Component {
           width={this.props.width || 1120}
           playNote={(midiNumber) => {
             // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
-            const audio = new Audio(`/sounds/${midiNumber - 60}.mp3`)
+            console.log(midiNumber, midiNumber - 65)
+            const audio = new Audio(`/sounds/${midiNumber - 65}.mp3`)
             audio.play()
           }}
           stopNote={() => {}}
