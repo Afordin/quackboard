@@ -3,23 +3,24 @@
 @tailwind utilities;
 
 .button {
-    @apply py-1 px-4 rounded-full font-bold uppercase text-sm border-2 border-black bg-white text-black hover:scale-[.98];
+    @apply py-1 px-4 rounded-full font-bold uppercase text-sm border-2 border-black bg-white text-black hover: scale-[.98];
     text-shadow: 0 0;
-}
-.test {
-        --line-col: #223;
-            text-shadow: var(--outline-1), var(--outline-2), var(--extrusion);
-            font-weight: 900;
-            filter: var(--thin-drop);
 }
 
 .bg-duck {
     background: url("/duck.svg") repeat theme('colors.yellow.200');
-    background-repeat: space;
 }
 
-.supershadow-tools,
-.supershadow-tools * {
+/* Props to Pollux for this effect */
+.relevance {
+    --line-col: #223;
+    text-shadow: var(--outline-1), var(--outline-2), var(--extrusion);
+    font-weight: 900;
+    filter: var(--thin-drop);
+}
+
+.comic-effect,
+.comic-effect * {
     --text-shadow: var(--line-col, #112);
     --outline-1: 1px 1px 1px var(--line-col), -1px -1px 1px var(--line-col),
         -1px 1px 1px var(--line-col), 1px 0px 1px var(--line-col),
@@ -40,14 +41,14 @@
     --thin-drop: drop-shadow(2px 1px 0px var(--line-col));
 }
 
-.supershadow-title {
+.comic-title {
     text-shadow: 0 -2px 0 var(--text-shadow), 0 2px 0 var(--text-shadow),
         2px 0 0 var(--text-shadow), -2px 0 0 var(--text-shadow),
         -4px 2px 0 var(--text-shadow), -2px 4px 0 var(--text-shadow);
     filter: drop-shadow(0 0 1px var(--text-shadow)) drop-shadow(-1px 1px 0px var(--text-shadow)) drop-shadow(0 0 0px var(--text-shadow)) drop-shadow(-1px 0 0px var(--text-shadow)) drop-shadow(-1px 0 0px var(--text-shadow)) drop-shadow(-1px 0 0px var(--text-shadow)) drop-shadow(-1px 0 0px var(--text-shadow));
 }
 
-.supershadow-text {
+.comic-text {
     text-shadow: 0 -1px 0 var(--text-shadow), 0 1px 0 var(--text-shadow),
         1px 0 0 var(--text-shadow), -1px 0 0 var(--text-shadow),
         -2px 1px 0 var(--text-shadow), -1px 2px 0 var(--text-shadow);

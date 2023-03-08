@@ -2,12 +2,12 @@ import Link from 'next/link'
 import Auth from '@/components/Auth'
 
 export default function Header() {
-  return (
+    return (
         <header className="flex flex-col items-center justify-between gap-4 px-5 py-2 mb-4 font-medium bg-white border-2 border-black rounded-full sm:gap-0 sm:flex-row">
-            <div className="font-semibold supershadow-text">
+            <div className="font-semibold comic-text">
                 <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true" className="mr-1 [text-shadow:0_0]">🦆</span>Quackboard</Link>
             </div>
-            <nav className="supershadow-text">
+            <nav className="comic-text">
                 <ul className="flex gap-8">
                     <li>
                         <Link href="/">Inicio</Link>
@@ -25,5 +25,5 @@ export default function Header() {
                 <Auth />
             </div>
         </header>
-  )
+    )
 }

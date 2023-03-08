@@ -4,12 +4,12 @@ export default function Home() {
   return (
     <section className="flex gap-6 flex-col xl:flex-row justify-between">
       <div className="">
-        <h1 className="text-xl font-bold supershadow-title text-green-400 sm:text-6xl">
+        <h1 className="text-xl font-bold comic-title text-green-400 sm:text-6xl">
           El mejor piano
           <br />
           de <span className="text-amber-400">patos</span> para <span className="text-amber-400">patos</span>
         </h1>
-        <p className="mx-auto mt-6 text-3xl font-medium leading-8 supershadow-text italic">
+        <p className="mx-auto mt-6 text-3xl font-medium leading-8 comic-text italic">
           Quack quack quack quack quack quack quack
         </p>
         <div className="mt-6 flex items-center  gap-x-6">
@@ -24,7 +24,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="rounded-2xl overflow-hidden h-56 aspect-video border-3 border-black supershadow-text test">
+      <div className="rounded-2xl overflow-hidden h-56 aspect-video border-3 border-black comic-text relevance">
         <video src="/invasion.mp4" autoPlay loop muted />
       </div>
     </section>

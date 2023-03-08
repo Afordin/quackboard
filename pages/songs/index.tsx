@@ -18,7 +18,7 @@ export default function List() {
 
   return (
     <section>
-      <h1 className="text-xl font-bold supershadow-title text-green-400 sm:text-5xl">Lista de canciones</h1>
+      <h1 className="text-xl font-bold comic-title text-green-400 sm:text-5xl">Lista de canciones</h1>
       <ul role="list" className="grid grid-cols-2 gap-4 mt-6">
         {songs?.map((song) => {
           return (

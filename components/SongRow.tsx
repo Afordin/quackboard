@@ -27,7 +27,7 @@ const SongRow = ({ song }: SongRowProps) => {
             className="rounded-full aspect-square h-16 w-auto"
           />
           <div>
-            <h3 className="text-lg font-bold pl-1 supershadow-text text-white test">{song.title}</h3>
+            <h3 className="text-lg font-bold pl-1 comic-text text-white  relevance">{song.title}</h3>
             <span className='font-medium'>@{song.username} · {formattedDate}</span>
           </div>
         </div>

@@ -23,36 +23,36 @@ export default function Layout({ children, meta: pageMeta }: Props) {
   }
 
   return (
-    <div className="bg-duck min-h-screen text-white supershadow-tools">
-            <style jsx global>{`
+    <div className="bg-duck min-h-screen text-white comic-effect">
+      <style jsx global>{`
         html {
           font-family: ${bangers.style.fontFamily};
         }
       `}</style>
-            <div className="py-4 px-8 container max-w-6xl mx-auto">
-                <Head>
-                    <title>{meta.title}</title>
-                    <meta name="robots" content="follow, index" />
-                    <link href="/favicon.ico" rel="shortcut icon" />
-                    <meta content={meta.description} name="description" />
-                    <meta
-                        property="og:url"
-                        content={`https://quackboard.vercel.app${router.asPath}`}
-                    />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:site_name" content={meta.title} />
-                    <meta property="og:description" content={meta.description} />
-                    <meta property="og:title" content={meta.title} />
-                    <meta property="og:image" content={meta.cardImage} />
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:title" content={meta.title} />
-                    <meta name="twitter:description" content={meta.description} />
-                    <meta name="twitter:image" content={meta.cardImage} />
-                </Head>
-                <Navbar />
-                <main id="skip" className="my-12">{children}</main>
-                <Footer />
-          </div>
+      <div className="py-4 px-8 container max-w-6xl mx-auto">
+        <Head>
+          <title>{meta.title}</title>
+          <meta name="robots" content="follow, index" />
+          <link href="/favicon.ico" rel="shortcut icon" />
+          <meta content={meta.description} name="description" />
+          <meta
+            property="og:url"
+            content={`https://quackboard.vercel.app${router.asPath}`}
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content={meta.title} />
+          <meta property="og:description" content={meta.description} />
+          <meta property="og:title" content={meta.title} />
+          <meta property="og:image" content={meta.cardImage} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={meta.title} />
+          <meta name="twitter:description" content={meta.description} />
+          <meta name="twitter:image" content={meta.cardImage} />
+        </Head>
+        <Navbar />
+        <main id="skip" className="my-12">{children}</main>
+        <Footer />
       </div>
+    </div>
   )
 }
