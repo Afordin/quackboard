@@ -3,12 +3,12 @@ import Auth from '@/components/Auth'
 
 export default function Header() {
   return (
-        <header className="flex flex-col items-center justify-between gap-4 px-5 py-2 mb-4 font-medium bg-white border-2 border-black rounded-full md:gap-0 md:flex-row">
+        <header className="flex flex-col items-center justify-between gap-4 px-5 py-2 mb-4 font-medium bg-white border-2 border-black rounded-xl md:rounded-full md:gap-0 md:flex-row">
             <div className="font-semibold comic-text">
                 <Link href="/" aria-label="Ir al inicio"><span aria-hidden="true" className="mr-1 [text-shadow:0_0]">🦆</span>Quackboard</Link>
             </div>
             <nav className="comic-text">
-                <ul className="flex gap-8">
+                <ul className="flex gap-8 justify-center">
                     <li>
                         <Link href="/">Inicio</Link>
                     </li>

@@ -15,7 +15,7 @@ export default function Home() {
         <div className="mt-6 flex items-center  gap-x-6">
           <Link
             href="songs/new"
-            className="button"
+            className="button !bg-amber-400"
           >
             Tocar una canción
           </Link>
