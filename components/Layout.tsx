@@ -23,13 +23,13 @@ export default function Layout({ children, meta: pageMeta }: Props) {
   }
 
   return (
-    <div className="bg-duck min-h-screen text-white comic-effect">
+    <div className="min-h-screen text-white bg-duck comic-effect">
       <style jsx global>{`
         html {
           font-family: ${bangers.style.fontFamily};
         }
       `}</style>
-      <div className="py-4 px-8 container max-w-6xl mx-auto">
+      <div className="container max-w-6xl px-8 py-4 mx-auto">
         <Head>
           <title>{meta.title}</title>
           <meta name="robots" content="follow, index" />

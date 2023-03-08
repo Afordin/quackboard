@@ -4,6 +4,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import PianoRecording from './PianoRecording'
+import DimensionsProvider from './Dimensions.jsx'
 import Loader from './Loader'
 
 const noteRange = {
@@ -140,22 +141,25 @@ export default class Quackboard extends React.Component {
   render() {
     return (
       <>
-        <PianoRecording
-          recording={this.state.recording}
-          setRecording={this.setRecording}
-          noteRange={noteRange}
-          width={this.props.width || 1120}
-          playNote={(midiNumber) => {
-            // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
-            const audio = new Audio(`/sounds/${midiNumber - 65}.mp3`)
-            audio.play()
-          }}
-          stopNote={() => {}}
-          keyboardShortcuts={keyboardShortcuts}
-          disabled={this.state.disabled}
-        />
-        <div className=" flex mt-6 justify-between align-middle">
-          <div className="flex gap-3">
+        <DimensionsProvider>
+          {({ containerWidth, containerHeight }) => (
+            <PianoRecording
+              recording={this.state.recording}
+              setRecording={this.setRecording}
+              noteRange={noteRange}
+              width={containerWidth}
+              playNote={(midiNumber) => {
+                // 60 -> C4, 61 -> C#4, 62 -> D4, etc.
+                const audio = new Audio(`/sounds/${midiNumber - 65}.mp3`)
+                audio.play()
+              }}
+              stopNote={() => { }}
+              keyboardShortcuts={keyboardShortcuts}
+              disabled={this.state.disabled}
+            />)}
+                </DimensionsProvider>
+        <div className=" flex md:flex-row flex-col mt-6 md:justify-between align-center gap-3 justify-center">
+          <div className="flex gap-3 justify-center">
             <button className="!bg-green-400 button" onClick={this.onClickPlay}>Escuchar de nuevo</button>
             <button className="!bg-red-400 button" onClick={this.onClickStop}>Parar</button>
             {this.props.song

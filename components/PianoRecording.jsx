@@ -59,7 +59,7 @@ class PianoRecording extends React.Component {
         ? currentEvents.map(event => event.midiNumber)
         : null
     return (
-      <div className="">
+      <div className={this.props.classes || ''}>
         <Piano
           playNote={this.props.playNote}
           stopNote={this.props.stopNote}
